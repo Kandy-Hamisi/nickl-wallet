@@ -39,7 +39,7 @@ export const TransactionItem = ({ item, onDelete }: TransactionItemProps) => {
   // const isIncome = amountNum > 0;
   const isIncome = item.type
     ? item.type === "income"
-    : item.category === "income";
+    : item.category === "Income";
   const iconName: IoniconsName =
     CATEGORY_ICONS[item.category] ?? "pricetag-outline";
 
@@ -65,7 +65,7 @@ export const TransactionItem = ({ item, onDelete }: TransactionItemProps) => {
               { color: isIncome ? COLORS.income : COLORS.expense },
             ]}
           >
-            {isIncome ? "+" : "-"}KSH{Math.abs(amountNum).toFixed(2)}
+            {isIncome ? "+" : "-"} KES {Math.abs(amountNum).toFixed(2)}
           </Text>
           <Text style={styles.transactionDate}>
             {item.created_at ? formatDate(item.created_at) : "-"}

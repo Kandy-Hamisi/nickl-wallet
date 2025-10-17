@@ -8,3 +8,10 @@ export const formatDate = (dateString: string) => {
     day: "numeric",
   });
 };
+
+export const formatAmount = (amount: number) => {
+  return Math.abs(amount).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};

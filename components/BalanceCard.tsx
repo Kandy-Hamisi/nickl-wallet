@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { styles } from "@/assets/styles/home.styles";
 import { COLORS } from "@/constants/colors";
+import { formatAmount } from "@/lib/utils";
 
 export type BalanceSummary = {
   balance: number | string;
@@ -30,19 +31,19 @@ export const BalanceCard = ({ summary }: BalanceCardProps) => {
   return (
     <View style={styles.balanceCard}>
       <Text style={styles.balanceTitle}>Total Balance</Text>
-      <Text style={styles.balanceAmount}>${balanceNum.toFixed(2)}</Text>
+      <Text style={styles.balanceAmount}>KES {formatAmount(balanceNum)}</Text>
       <View style={styles.balanceStats}>
         <View style={styles.balanceStatItem}>
           <Text style={styles.balanceStatLabel}>Income</Text>
           <Text style={[styles.balanceStatAmount, { color: COLORS.income }]}>
-            +${incomeNum.toFixed(2)}
+            + KES {formatAmount(incomeNum)}
           </Text>
         </View>
         <View style={[styles.balanceStatItem, styles.statDivider]} />
         <View style={styles.balanceStatItem}>
           <Text style={styles.balanceStatLabel}>Expenses</Text>
           <Text style={[styles.balanceStatAmount, { color: COLORS.expense }]}>
-            -${Math.abs(expensesNum).toFixed(2)}
+            - KES {formatAmount(expensesNum)}
           </Text>
         </View>
       </View>

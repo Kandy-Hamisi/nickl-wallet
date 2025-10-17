@@ -122,8 +122,8 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
   },
   balanceStatAmount: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 15,
+    fontWeight: "500",
   },
   sectionTitle: {
     fontSize: 18,
@@ -178,7 +178,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   transactionAmount: {
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: "600",
     marginBottom: 4,
   },
