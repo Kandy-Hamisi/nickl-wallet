@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 
 // Infer API base URL from env or fall back to local dev backend
-const DEFAULT_API_BASE = "http://192.168.88.247:5000"; // adjust if your backend runs elsewhere
+const DEFAULT_API_BASE = "https://nickl-wallet-api.onrender.com"; // adjust if your backend runs elsewhere
 const API_BASE =
   // Expo public env
   (typeof process !== "undefined" &&
-    (process as any)?.env?.EXPO_PUBLIC_API_BASE_URL) ||
+    (process as any)?.env?.EXPO_PUBLIC_API_BASE_URL!) ||
   (typeof process !== "undefined" && (process as any)?.env?.API_BASE_URL) ||
   DEFAULT_API_BASE;
 
@@ -79,6 +79,7 @@ export function useTransactions(options: UseTransactionsOptions = {}) {
   const buildUrl = useCallback((path: string) => {
     const base = API_BASE?.replace(/\/$/, "");
     const p = path.startsWith("/") ? path : `/${path}`;
+    console.log(`${base}${p}`);
     return `${base}${p}`;
   }, []);
 

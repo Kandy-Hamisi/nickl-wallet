@@ -73,7 +73,7 @@ export default function Page() {
       .reduce((acc, c) => acc + c.total_amount, 0);
 
     const expenseTotal = summary.byCategory
-      .filter((c) => c.category.toLowerCase() === "expense")
+      .filter((c) => c.category && c.category.toLowerCase() !== "income")
       .reduce((acc, c) => acc + c.total_amount, 0);
 
     // Keep expenses negative to match BalanceCard’s current display logic
@@ -82,7 +82,7 @@ export default function Page() {
     return {
       balance: summary.total_amount,
       income: incomeTotal,
-      expenses: expensesSigned,
+      expenses: expenseTotal,
     };
   }, [summary]);
 
@@ -109,7 +109,7 @@ export default function Page() {
           <View style={styles.headerRight}>
             <TouchableOpacity
               style={styles.addButton}
-              onPress={() => router.push("/")}
+              onPress={() => router.push("/create")}
             >
               <Ionicons name="add" size={20} color="#FFF" />
               <Text style={styles.addButtonText}>Add</Text>
